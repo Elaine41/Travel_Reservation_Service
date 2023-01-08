@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+
+	    <head> <script src=
+    "https://www.kryogenix.org/code/browser/sorttable/sorttable.js">
+        </script>
+      </head>
+
+<body>
+<style>
+    #t1 , th , td {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        width: 800px;
+        color:rgb(145, 179, 174);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        border: 1px black;
+        font-size:24px;
+    }
+    .form1{
+        border-collapse: collapse;
+        border-radius: 20px;
+        margin: 25px 0;
+        font-size: 0.9em;
+        color:darkslategray;
+        font-family: sans-serif;
+        min-width: 400px;
+    
+    
+    
+    
+    }
+    .heading{
+        color:rgb(100, 134, 129);
+        text-align: center;
+        font-size: xx-large;
+    
+    
+    
+    }
+    button ,.name,.in_name{
+    
+        border-radius: 12px;
+        color:rgb(145, 179, 174);
+        font-size: 24px;
+    }
+    
+    .head_row{
+    align-content: center;
+    text-align: center;
+    
+    }
+    input[type=text], select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      height: 30px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type=submit], select {
+      width: 50%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      height: 30px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      text-size-adjust: 30px;
+      height:50px;
+    }
+
+
+</style>
+ 
+<h1 class="heading" style="font-size: xx-large;">View Flights</h1>
+<form action="{{ url_for("view_flights")}}" method="post" enctype="multipart/form-data">
+    <label for="name">Flight ID:</label>
+    <input type="text" id="flightid" name="flightid" placeholder="Flight ID">
+    <button type="submit" name = "submit" id="submit">Filter</button>
+    <button type="submit" name="Back" value="Back">Back</button>
+</form>
+<table id="mytable" class="sortable">
+
+
+<tr>
+    <th>ID</th>
+    <th>Airline</th>
+    <th>To</th>
+    <th>Date</th>
+    <th>Num of seats</th>
+    <th>Cost Per Seat</th>
+    <th>Total Spent</th>
+    <th>Capacity</th>
+</tr>
+
+
+{% for a in total %}
+<tr>
+{% for j in a %}
+<td>{{j}}</td>
+{% endfor %}
+</tr>
+{% endfor %}
+</table>
+
+</form>
+</body>
+</html>

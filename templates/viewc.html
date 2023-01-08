@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src=
+    "https://www.kryogenix.org/code/browser/sorttable/sorttable.js">
+        </script>
+
+        <style>
+
+#t1 , th , td {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        width: 900px;
+        color:rgb(145, 179, 174);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        border: 1px black;
+        font-size:24px;
+    }
+    .form1{
+        border-collapse: collapse;
+        border-radius: 20px;
+        margin: 25px 0;
+        font-size: 0.9em;
+        color:darkslategray;
+        font-family: sans-serif;
+        min-width: 400px;
+    
+    
+    
+    
+    }
+    .heading{
+        color:rgb(100, 134, 129);
+        text-align: center;
+        font-size: 45px;
+    
+    
+    
+    }
+    .submit_button ,.name,.in_name{
+    
+        border-radius: 12px;
+        color:rgb(145, 179, 174);
+        font-size: 24px;
+    }
+    
+    .head_row{
+    align-content: center;
+    text-align: center;
+    }
+    input[type=text] {
+      width: 100%;
+      background-color:rgb(124, 161, 156);
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+        </style>
+</head>
+<body>
+<h1 class="heading">View Customers</h1>
+<form action="{{ url_for("view_customers")}}" method="post" enctype="multipart/form-data" class="form1">
+ <input type="text" class="live-search-box" name="Name" placeholder="search here" />
+ <input type="reset" value="Reset" name="reset">
+ <a href="/admin"><button type="button">Back</button></a>
+</form>
+
+<table class="live-search-list sortable" type="None"id="t1">
+            <th>Name</th>
+            <th>Average Rating</th>
+            <th>Location</th>
+            <th>Is Owner</th>
+            <th>Total Seats Purchased</th>
+        
+        {% for a in customers %}
+        <tr>
+        {% for j in a %}
+        <td>{{j}}</td>
+        {% endfor %}
+        </tr>
+        {% endfor %}
+        </table>
+        
+  
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+
+$('.live-search-list tr').each(function(){
+$(this).attr('data-search-term', $(this).text().toLowerCase());
+});
+
+$('.live-search-box').on('keyup', function(){
+
+var searchTerm = $(this).val().toLowerCase();
+
+	$('.live-search-list tr').each(function(){
+
+		if ($(this).filter('[data-search-term *= ' + searchTerm + ']').length > 0 || searchTerm.length < 1) {
+			$(this).show();
+		} else {
+			$(this).hide();
+		}
+
+	});
+
+});
+
+});
+</script>
+
+</body>
+</html>

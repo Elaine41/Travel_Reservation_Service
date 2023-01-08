@@ -1,0 +1,86 @@
+<html>
+
+<head> <script src=
+    "https://www.kryogenix.org/code/browser/sorttable/sorttable.js">
+        </script>
+        <style>
+    #mytable , th , td {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        width: 900px;
+        color:rgb(145, 179, 174);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        border: 1px black;
+        font-size:24px;
+    }
+    .form1{
+        border-collapse: collapse;
+        border-radius: 20px;
+        margin: 25px 0;
+        font-size: 0.9em;
+        color:darkslategray;
+        font-family: sans-serif;
+        min-width: 400px;
+    
+    
+    
+    
+    }
+    .heading{
+        color:rgb(100, 134, 129);
+        text-align: center;
+        font-size: 45px;
+    
+    
+    
+    }
+    .submit_button ,.name,.in_name{
+    
+        border-radius: 12px;
+        color:rgb(145, 179, 174);
+        font-size: 24px;
+    }
+    
+    .head_row{
+    align-content: center;
+    text-align: center;
+    
+    }
+
+        </style>
+      </head>
+<body>
+    <input type="text" class="live-search-box" placeholder="search here" />
+<h1> View Customers</h1>
+<form action="{{ url_for("view_customers")}}" method="post" enctype="multipart/form-data">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" placeholder="name">
+    <input type="submit">
+    <button type="submit" name="Back" value="Back">Back</button>
+    <a href="/admin"><button type="button">Back</button></a>
+</form>
+<table id="mytable" class="sortable">
+
+<tr>
+    <th>Name</th>
+    <th>Average Rating</th>
+    <th>Location</th>
+    <th>Is Owner</th>
+    <th>Total Seats Purchased</th>
+</tr>
+
+{% for a in customers %}
+<tr>
+{% for j in a %}
+<td>{{j}}</td>
+{% endfor %}
+</tr>
+{% endfor %}
+</table>
+
+</form>
+</body>
+</html>

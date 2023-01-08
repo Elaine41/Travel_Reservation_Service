@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+</head>
+
+<style>
+    #t1 , th , td {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        width: 900px;
+        color:rgb(145, 179, 174);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        border: 1px black;
+        font-size:24px;
+    }
+    .form1{
+        border-collapse: collapse;
+        border-radius: 20px;
+        margin: 25px 0;
+        font-size: 0.9em;
+        color:darkslategray;
+        font-family: sans-serif;
+        min-width: 400px;
+    
+    
+    
+    
+    }
+    .heading{
+        color:rgb(100, 134, 129);
+        text-align: center;
+        font-size: 45px;
+    
+    
+    
+    }
+    .submit_button ,.name,.in_name{
+    
+        border-radius: 12px;
+        color:rgb(145, 179, 174);
+        font-size: 24px;
+    }
+    
+    .head_row{
+    align-content: center;
+    text-align: center;
+    
+    }
+   button {
+  
+  width: 50%;
+  
+  background-color:rgb(124, 161, 156);
+  
+  color: white;
+  
+  padding: 14px 20px;
+  
+  margin: 8px 0;
+  
+  border: none;
+  
+  border-radius: 4px;
+  
+  cursor: pointer;
+  
+  text-align: center;
+  
+  }
+    
+    
+    </style>
+<body>
+<h1 class="heading"> View Airlines</h1>
+<form action="{{ url_for("view_airlines")}}" method="post" enctype="multipart/form-data" class="form1">
+    <label for="name" class="name">Name:</label>
+    <input type="text" id="name" name="name" placeholder="name" , class="in_name">
+    <input type="submit" class="submit_button">
+<table class="sortable" id="t1">
+
+<tr>
+    <th>Name</th>
+    <th>Rating</th>
+    <th>Total Flights</th>
+    <th>Minimum Flight cost</th>
+</tr>
+
+{% for a in airlines %}
+<tr>
+{% for j in a %}
+<td>{{j}}</td>
+{% endfor %}
+</tr>
+{% endfor %}
+</table>
+
+<a href="/admin"><button type="button">Back</button></a>
+      </body>
+</html>

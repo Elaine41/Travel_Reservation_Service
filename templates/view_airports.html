@@ -1,0 +1,106 @@
+
+
+<div class="heading">
+<h1> 
+    View Airports
+</h1>
+</div>
+<style>
+
+    #t1 , th , td {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        width: 800px;
+        color:rgb(145, 179, 174);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        border: 1px black;
+        font-size:24px;
+    }
+    .form1{
+        border-collapse: collapse;
+        border-radius: 20px;
+        margin: 25px 0;
+        font-size: 0.9em;
+        color:darkslategray;
+        font-family: sans-serif;
+        min-width: 400px;
+    
+    
+    
+    
+    }
+    .heading{
+        color:rgb(100, 134, 129);
+        text-align: center;
+        font-size: xx-large;
+    
+    
+    
+    }
+    .submit_button ,.name,.in_name{
+    
+        border-radius: 12px;
+        color:rgb(145, 179, 174);
+        font-size: 24px;
+    }
+    
+    .head_row{
+    align-content: center;
+    text-align: center;
+    
+    }
+    input[type=text], select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      height: 30px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type=submit], select {
+      width: 50%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      height: 30px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      text-size-adjust: 30px;
+      height:50px;
+    }
+   
+</style>
+<div class="form1">
+<form action="{{ url_for("view_airport")}}" method="post" enctype="multipart/form-data" class="form1">
+    <label for="ID">ID:</label>
+    <input type="text" id="ID" name="ID" placeholder="ID">
+    <label for="tz">Time Zone:</label>
+    <input type="text" id="tz" name="tz" placeholder="Time Zone">
+    <input type="submit" class="submit_button">
+</div>
+<table class="airport_table" cellpadding="0" cellspacing="" width="100%" id="t1">
+
+<tr class="head_row">
+    <th>Airport ID</th>
+    <th>Name</th>
+    <th>Time Zone</th>
+    <th>Address</th>
+</tr>
+
+{% for a in airports %}
+<tr>
+{% for j in a %}
+<td>{{j}}</td>
+{% endfor %}
+</tr>
+{% endfor %}
+</table>
+
+<input type="submit" value="Reset" name="reset_"></button>
+<input type="submit" value="Back" name="_back"></button>

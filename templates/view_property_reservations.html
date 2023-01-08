@@ -1,0 +1,100 @@
+<h1 class="heading"> View Property Reservations</h1>
+<style>
+    #t1 , th , td {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        width: 800px;
+        color:rgb(145, 179, 174);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        border: 1px black;
+        font-size:24px;
+    }
+    .form1{
+        border-collapse: collapse;
+        border-radius: 20px;
+        margin: 25px 0;
+        font-size: 0.9em;
+        color:darkslategray;
+        font-family: sans-serif;
+        min-width: 400px;
+    
+    
+    
+    
+    }
+    .heading{
+        color:rgb(100, 134, 129);
+        text-align: center;
+        font-size: xx-large;
+    
+    
+    
+    }
+    button ,.name,.in_name{
+    
+        border-radius: 12px;
+        color:rgb(145, 179, 174);
+        font-size: 24px;
+    }
+    
+    .head_row{
+    align-content: center;
+    text-align: center;
+    
+    }
+    input[type=text], select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      height: 30px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type=submit], select {
+      width: 50%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      height: 30px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      text-size-adjust: 30px;
+      height:50px;
+    }
+
+
+</style>
+
+
+
+</style>
+  
+<table>
+
+<tr>
+    <th>Property Name</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Customer</th>
+    <th>Cust. Phone #</th>
+    <th>Cost</th>
+    <th>Review</th>
+    <th>Rating</th>
+</tr>
+{% if abc %}
+{% for a in abc %}
+<tr>
+{% for j in a %}
+<td>{{j}}</td>
+{% endfor %}
+</tr>
+{% endfor %}
+{% endif %}
+</table>
+<a href="/owner"><button>Back</button></a>
